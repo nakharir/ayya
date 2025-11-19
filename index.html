@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Aya from Moon</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <audio id="bg-music" loop>
+      <source src="assets/audio/lagu.mp3" type="audio/mpeg" />
+    </audio>
+
+    <div class="stars" id="star-container"></div>
+    <div class="moon"></div>
+
+    <section id="gate" class="gate-overlay">
+      <div class="gate-content">
+        <h2 id="typing-text" class="fade-text"></h2>
+        <div class="input-wrapper">
+          <input
+            type="password"
+            id="password-input"
+            placeholder="Masukkan password"
+            autocomplete="off"
+          />
+          <div class="error-msg" id="error-msg">Password salah, coba lagi.</div>
+        </div>
+        <p class="hint">*Password: Tanggal lahir Ayya 8 digit</p>
+      </div>
+    </section>
+
+    <main id="main-content" class="hidden-content">
+      <section class="intro-section">
+        <h2 class="intro-title">Under The Same Moonlight</h2>
+        <p class="intro-subtitle">Scroll pelan-pelan ke bawah...</p>
+      </section>
+      <div class="spacer"></div>
+
+      <div class="memory-card left">
+        <div class="img-frame">
+          <img src="assets/img/img1.jpeg" alt="Kenangan 1" />
+        </div>
+        <div class="text-frame">
+          <p>"Bulan selalu setia menemani malam yang sunyi..."</p>
+        </div>
+      </div>
+
+      <div class="memory-card right">
+        <div class="text-frame">
+          <p>
+            "Sama seperti cahayamu yang selalu menenangkan di tengah
+            keramaian..."
+          </p>
+        </div>
+        <div class="img-frame">
+          <img src="assets/img/img2.jpeg" alt="Kenangan 2" />
+        </div>
+      </div>
+
+      <div class="memory-card left">
+        <div class="img-frame">
+          <img src="assets/img/img3.jpeg" alt="Kenangan 3" />
+        </div>
+        <div class="text-frame">
+          <p>"Terima kasih telah bersinar di duniaku, Ayya."</p>
+        </div>
+      </div>
+
+      <section class="altar-section">
+        <div class="candle-container" id="candle-trigger">
+          <div class="flame" id="flame"></div>
+          <div class="wick"></div>
+          <div class="wax"></div>
+        </div>
+        <p class="instruction" id="instruction-text">
+          Klik lilin untuk menyalakan cahaya
+        </p>
+
+        <div class="final-message" id="final-message">
+          <h1>Happy Birthday, Ayya!</h1>
+          <div class="letter-content">
+            <p>
+              Selamat ulang tahun yang ke-20. <br />
+              Semoga hal baik selalu beriringan denganmu. <br />
+              Semoga semesta senantiasa berpihak padamu. <br />
+              Teruslah melangkah & berbahagialah. <br />
+              I always support you. <br />
+              Maaf jika aku pernah menyakitimu.<br />
+              Aku tak akan hilang, tapi juga tak bisa bersama. <br />
+              Menurutku, kita ini kembaran yang memiliki banyak kesamaan. <br />
+              Terimakasihh..., tanpamu mungkin aku bukan jadi diriku yang
+              sekarang. <br />
+              dan karena itu, aku berterimakasih sekaligus minta maaf. <br />
+              di hari yang spesial ini, aku ingin berterimakasih. <br />
+              Untuk semuanyaa.. <br />
+              <br />
+              <i>- From your bestfriend</i>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="spacer-end"></div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>

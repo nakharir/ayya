@@ -1,0 +1,313 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to bottom, #020205, #0a0f1e);
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden; /* Mencegah scroll samping */
+  overflow-y: hidden; /* Dikunci dulu sebelum password benar */
+  min-height: 100vh;
+}
+
+/* Background Elements */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: twinkle var(--duration) infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.moon {
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  width: 80px;
+  height: 80px;
+  background: #fdfdff;
+  border-radius: 50%;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.5),
+    0 0 80px rgba(255, 255, 255, 0.2);
+  z-index: -1;
+  transition: top 0.5s ease;
+}
+
+/* FASE 1: THE GATE */
+.gate-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #020205;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.gate-content {
+  text-align: center;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.gate-content h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.input-wrapper input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  outline: none;
+  margin-top: 20px;
+  width: 100%;
+  transition: border-color 0.3s;
+}
+
+.input-wrapper input:focus {
+  border-bottom: 1px solid #fff;
+}
+
+.error-msg {
+  color: #ff6b6b;
+  font-size: 0.8rem;
+  margin-top: 10px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.hint {
+  font-size: 0.7rem;
+  color: #888;
+  margin-top: 20px;
+}
+
+/* FASE 2: JOURNEY */
+.spacer {
+  height: 50vh;
+}
+.spacer-end {
+  height: 20vh;
+}
+
+.memory-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin: 150px auto; /* Jarak antar foto jauh */
+  max-width: 900px;
+  opacity: 0; /* Diatur oleh GSAP */
+  transform: translateY(50px);
+}
+
+.memory-card.right {
+  flex-direction: row-reverse;
+}
+
+.img-frame img {
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-frame p {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  font-style: italic;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  max-width: 300px;
+}
+
+/* FASE 3: ALTAR & CANDLE */
+.altar-section {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+/* Lilin CSS */
+.candle-container {
+  position: relative;
+  width: 60px;
+  height: 160px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.candle-container:hover {
+  transform: scale(1.05);
+}
+
+.wax {
+  width: 100%;
+  height: 100%;
+  background: #e0e0e0;
+  border-radius: 5px;
+  box-shadow: inset -10px 0 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.wick {
+  width: 4px;
+  height: 15px;
+  background: #333;
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.flame {
+  width: 20px;
+  height: 35px;
+  background: radial-gradient(ellipse at bottom, #ffdd00 0%, #ff6600 100%);
+  border-radius: 50% 50% 20% 20%;
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  box-shadow: 0 0 20px #ffdd00, 0 0 60px #ff6600;
+  transition: transform 0.5s ease-out;
+  opacity: 0;
+}
+
+/* Animasi Api Nyala */
+.flame.active {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+  animation: flicker 0.1s infinite alternate;
+}
+
+@keyframes flicker {
+  0% {
+    transform: translateX(-50%) scale(1) skewX(-2deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(-50%) scale(1.05) skewX(2deg);
+    opacity: 1;
+  }
+}
+
+.instruction {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  opacity: 0.6;
+  transition: opacity 0.5s;
+}
+
+/* Final Message */
+.final-message {
+  margin-top: 50px;
+  opacity: 0;
+  transform: translateY(20px);
+  display: none; /* Hidden sampai lilin nyala */
+}
+
+.final-message h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
+  color: #ffdd00;
+  text-shadow: 0 0 20px rgba(255, 221, 0, 0.5);
+  margin-bottom: 20px;
+}
+
+.letter-content {
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+  .memory-card {
+    flex-direction: column !important;
+    text-align: center;
+    gap: 15px;
+  }
+  .img-frame img {
+    width: 80%;
+    height: auto;
+  }
+  .final-message h1 {
+    font-size: 2rem;
+  }
+}
+.intro-section {
+  height: 80vh; /* Tinggi hampir selayar penuh */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform: translateY(20px);
+}
+.intro-title {
+  font-family: "Playfair Display", serif;
+  font-size: 3.5rem; /* Ukuran besar */
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 5px;
+  margin-bottom: 15px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.intro-subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
