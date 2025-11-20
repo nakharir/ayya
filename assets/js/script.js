@@ -25,7 +25,7 @@ for (let i = 0; i < starCount; i++) {
 
 // 2. Typing Effect (FIXED: Input hidden initially, Name corrected)
 const typingTextElement = document.getElementById("typing-text");
-const fullText = "Halo Ayya. Sudah siap untuk memulai?"; // Corrected Name
+const fullText = "Halo Ayya. Masukkan kodenya jika sudah siap"; // Corrected Name
 let charIndex = 0;
 
 function typeWriter() {
